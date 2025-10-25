@@ -28,13 +28,13 @@ jobs:
       #- uses: actions/checkout@v4
 
       # Runs a single command using the runners shell
-      - name: Montagem
+      - name: Build
         run: echo "Hello, world!"
 
-      - name: Testagem
+      - name: Test
         run: echo "Teste, Mundo!!"
 
-      - name: Produção
+      - name: Deploy
         run: echo "Deployment, Mundo!!"
 
       # Runs a set of commands using the runners shell
