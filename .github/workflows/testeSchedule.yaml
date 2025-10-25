@@ -1,0 +1,47 @@
+# This is a basic workflow to help you get started with Actions
+name: meuWorkflow
+
+# Controls when the workflow will run
+##Tipos de trigger
+on:
+  # Triggers the workflow on push or pull request events but only for the $default-branch branch
+  push: 
+    branches: [ main ]
+  #pull_request:
+  #  branches: [ $default-branch ]
+
+  # Allows you to run this workflow manually from the Actions tab
+  ##CASO QUERIA REALIZAR A TAREFA DE FORMA MANUAL
+  #workflow_dispatch:
+
+# A workflow run is made up of one or more jobs that can run sequentially or in parallel
+jobs:
+  # This workflow contains a single job called "build"
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Build
+        run: echo "Hello, world!"
+  
+  #criaçao de uma nova job
+  test:
+    runs-on: ubuntu-latest
+    #precisa setar o needs para que ele aconteça depois do build
+    needs: build
+    steps:
+      - name: Test
+        run: echo "Teste, Mundo!!"
+
+  deploy:
+    runs-on: ubuntu-latest
+    needs: test
+    steps:
+      - name: Deploy
+        run: echo "Deployment, Mundo!!"
+
+      # Runs a set of commands using the runners shell
+      #- name: Run a multi-line script
+        ##se for usar mais de uma linha, usar o pipe |
+        #run: |
+         # echo Add other actions to build,
+         # echo test, and deploy your project.
